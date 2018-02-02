@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <file>app</file>
+    <exclude-pattern>routes/*</exclude-pattern>
+    <arg name="report" value="full" />
+    <rule ref="PSR2" />
+    <rule ref="PSR1">
+        <exclude name="PSR1.Classes.ClassDeclaration.MultipleClasses" />
+    </rule>
+</ruleset>
