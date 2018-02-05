@@ -39,10 +39,10 @@ class Database extends Command
         $connection = $this->ask('What is your connection type?', 'mysql');
         $host       = $this->ask('What is your database host?', '127.0.0.1');
         $port       = $this->ask('What is your database port?', 3306);
-        $database   = $this->ask('What is your database name?', 'database_name');
-        $username   = $this->ask('What is your database user?', 'database_username');
+        $database   = $this->ask('What is your database name?', 'my_db');
+        $username   = $this->ask('What is your database user?', 'root');
 
-        $password   = $this->secret('What is your database user\'s password?', 'password');
+        $password   = $this->secret('What is your database user\'s password?', '');
 
         $default_connection = $this->laravel['config']['database.default'];
         $connection_details = $this->laravel['config']['database.connections.' . $default_connection];
@@ -68,15 +68,16 @@ class Database extends Command
         ));
 
         $this->call('cache:clear'); // clear up cache
+        $this->comment(' Setup Database Completed..');
 
-        if ($this->confirm('Do you want to run migration?')) {
-            $this->comment(' Migrating..');
-            $this->call('migrate');
-        }
-
-        if ($this->confirm('Do you want to run data seeder?')) {
-            $this->comment(' Seeding..');
-            $this->call('db:seed');
-        }
+//        if ($this->confirm('Do you want to run migration?')) {
+//            $this->comment(' Migrating..');
+//            $this->call('migrate');
+//        }
+//
+//        if ($this->confirm('Do you want to run data seeder?')) {
+//            $this->comment(' Seeding..');
+//            $this->call('db:seed');
+//        }
     }
 }
